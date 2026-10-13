@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f4f7fc;
+            color: #1e2b3a;
+            line-height: 1.6;
+        }
+
+        /* === MENU === */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #0f1e2b;
+            padding: 1rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1.2rem 2rem;
+            border-bottom: 1px solid #2a4052;
+        }
+
+        nav a {
+            color: #d0dce8;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            padding: 0.3rem 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+            border-bottom-color: #5a9fd4;
+        }
+
+        /* === CONTENEUR === */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 3rem;
+        }
+
+        /* === HERO === */
+        .hero {
+            background: #0f1e2b;
+            color: white;
+            border-radius: 2rem;
+            padding: 3rem 2.5rem;
+            margin-bottom: 3.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-text h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-text .tagline {
+            font-size: 1.1rem;
+            margin-top: 0.3rem;
+            color: #b8cfdf;
+        }
+
+        .hero-text .tagline i {
+            margin-right: 0.4rem;
+            color: #5a9fd4;
+        }
+
+        .cv-btn {
+            margin-top: 1.5rem;
+            display: inline-block;
+            background: #2b6c97;
+            color: white;
+            padding: 0.7rem 2.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid #4a8bb8;
+            transition: 0.2s;
+        }
+
+        .cv-btn:hover {
+            background: #1f5579;
+        }
+
+.hero-image-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #fff; /* Optionnel : ajoute une bordure */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Optionnel : ajoute une ombre */
+}
+
+
+        /* === SECTIONS === */
+        section {
+            margin-bottom: 3.5rem;
+            scroll-margin-top: 80px;
+        }
+
+        .section-title {
+            font-size: 1.9rem;
+            font-weight: 600;
+            margin-bottom: 1.8rem;
+            color: #0f1e2b;
+            border-left: 5px solid #2b6c97;
+            padding-left: 1.2rem;
+        }
+
+        .section-title i {
+            color: #2b6c97;
+            margin-right: 0.6rem;
+        }
+
+        /* === GRILLE CARTES === */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            padding: 1.6rem 1.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid #e2ecf5;
+            transition: 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            border-color: #b6d2e8;
+            box-shadow: 0 8px 20px rgba(0, 30, 50, 0.06);
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a3d55;
+            margin-bottom: 0.2rem;
+        }
+
+        .card h3 i {
+            color: #2b6c97;
+            margin-right: 0.4rem;
+        }
+
+        .card .badge {
+            background: #eaf2f9;
+            border-radius: 30px;
+            padding: 0.1rem 0.9rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #1a4d70;
+            display: inline-block;
+            margin: 0.2rem 0 0.4rem;
+            align-self: flex-start;
+        }
+
+        .card .meta {
+            color: #4f6f88;
+            font-size: 0.85rem;
+            margin: 0.2rem 0 0.5rem;
+        }
+
+        .card p {
+            color: #2b4053;
+            font-size: 0.92rem;
+            flex: 1;
+        }
+
+        /* === BULLES / LIENS EXTERNES === */
+        .bubble-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #e8f0f7;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.8rem;
+            color: #1a3f5a;
+            text-decoration: none;
+            border: 1px solid #c9dcee;
+            transition: 0.2s;
+            margin-top: 0.8rem;
+            align-self: flex-start;
+        }
+
+        .bubble-link i {
+            color: #2b6c97;
+            font-size: 0.85rem;
+        }
+
+        .bubble-link:hover {
+            background: #d4e4f2;
+            border-color: #2b6c97;
+        }
+
+        /* === COMPÉTENCES === */
+        .skill-block {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem 2rem;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 1.2rem 1.8rem;
+            border-radius: 1.5rem;
+            flex: 1 0 170px;
+            border: 1px solid #dfecf5;
+        }
+
+        .skill-item h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a3d55;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-item .sub {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem 0.6rem;
+            margin-top: 0.3rem;
+            color: #1d4460;
+            font-size: 0.9rem;
+        }
+
+        /* === CERTIFICATIONS === */
+        .cert-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: flex-start; /* Aligne les éléments en haut */
+        }
+
+        /* Conteneur principal pour PIX (Titre + Bouton) */
+        .cert-card-pix {
+            background: #eaf2f9;
+            border-radius: 40px;
+            padding: 0.8rem 1.6rem;
+            border-left: 4px solid #2b6c97;
+            display: inline-flex;
+            flex-direction: column; /* Empile les éléments verticalement */
+            align-items: center; /* Centre horizontalement */
+            gap: 0.5rem; /* Espace entre le titre et le bouton */
+        }
+
+        .cert-card-pix .cert-title {
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #1e2b3a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cert-card-pix .cert-title i {
+            color: #2b6c97;
+        }
+
+        /* Le bouton "Voir la certification" à l'intérieur */
+        .cert-card-pix .bubble-link {
+            margin-top: 0; /* Enlève la marge par défaut */
+            background: #ffffff; /* Fond blanc pour le distinguer */
+            border: 1px solid #c9dcee;
+            padding: 0.3rem 1rem;
+            font-size: 0.75rem;
+            align-self: center; /* Centre le bouton */
+        }
+
+        .cert-card-pix .bubble-link:hover {
+            background: #f0f8ff;
+            border-color: #2b6c97;
+        }
+
+        /* Style pour les autres certifications (inchangé) */
+        .cert-tag {
+            background: #eaf2f9;
+            border-radius: 40px;
+            padding: 0.5rem 1.4rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border-left: 4px solid #2b6c97;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .cert-tag i {
+            margin-right: 0.5rem;
+            color: #2b6c97;
+        }
+
+        /* === DIPLÔMES === */
+        .diplome-item {
+            background: white;
+            padding: 1rem 1.8rem;
+            border-radius: 1.5rem;
+            border: 1px solid #dae7f2;
+            margin-bottom: 0.7rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .diplome-item strong {
+            font-size: 1.05rem;
+            color: #143649;
+        }
+
+        .diplome-item .detail {
+            color: #3e617c;
+            font-size: 0.95rem;
+        }
+
+        /* === VEILLE === */
+        .veille-block {
+            background: #eaf2f9;
+            border-radius: 1.5rem;
+            padding: 1.6rem 2rem;
+            border-left: 5px solid #2b6c97;
+        }
+
+        .veille-block h4 {
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        /* === RÉSEAUX === */
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 2rem;
+            background: #eaf2f9;
+            border-radius: 3rem;
+            padding: 0.9rem 2rem;
+        }
+
+        .social-links a {
+            color: #1a3f5a;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .social-links a i {
+            margin-right: 0.4rem;
+            color: #2b6c97;
+        }
+
+        /* === CONTACT === */
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem 2.2rem;
+            border: 1px solid #dce8f2;
+        }
+
+        .contact-item {
+            flex: 1 1 170px;
+        }
+
+        .contact-item i {
+            width: 1.8rem;
+            color: #2b6c97;
+        }
+
+        .contact-item strong {
+            color: #143649;
+        }
+
+        .separator {
+            margin: 2rem 0 1rem;
+            border: 0;
+            height: 1px;
+            background: #d4e3f0;
+        }
+
+        .footer {
+            text-align: center;
+            color: #4f6f88;
+            font-size: 0.85rem;
+            padding: 0.5rem 0;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 680px) {
+            nav {
+                gap: 0.6rem 1rem;
+                padding: 0.6rem 1rem;
+            }
+            nav a {
+                font-size: 0.78rem;
+            }
+            .hero {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.2rem;
+                padding: 2rem 1.5rem;
+            }
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            .hero-emoji {
+                font-size: 2.6rem;
+                padding: 0.4rem 1rem;
+            }
+            .contact-grid {
+                flex-direction: column;
+            }
+            .diplome-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#projets">Projets</a>
+    <a href="#experiences">Expériences</a>
+    <a href="#competences">Compétences</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#diplomes">Diplômes</a>
+    <a href="#veille">Veille</a>
+    <a href="#reseaux">Réseaux</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div class="container">
+
+    <!-- HERO -->
+    <header class="hero" id="accueil">
+        <div class="hero-text">
+            <h1>JEAN ROBERT--HÉNAFF</h1>
+            <div class="tagline">
+                <span><i class="fas fa-code"></i> Étudiant en Développement WEB · BTS SIO SLAM · Nouvelle-Calédonie</span>
+            </div>
+            <a href="file:///C:/xampp/htdocs/Portfolio_exam_2026/CV_Jean_Robert-Henaff.pdf" class="cv-btn"><i class="fas fa-file"></i> Voir mon CV</a>
+        </div>
+<div class="hero-emoji">
+    <img src="visage jean.jpg" alt="Ma photo" class="hero-image-circle">
+</div>
+    </header>
+
+    <!-- PROJETS -->
+    <section id="projets">
+        <h2 class="section-title"><i class="fas fa-project-diagram"></i> PROJETS - Ce que j'ai construit</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3><i class="fas fa-tree"></i> SudTourisme Application Mobile</h3>
+                <div class="badge">2026</div>
+                <p><strong>SudTourisme </strong><br>Projet visuel sous Figma de l'application mobile</p>
+                <a href="https://www.figma.com/make/cbh7SsKeqK5h8o9R7VvKm3/Cr%25C3%25A9ation-de-la-page-d-acceuil-de-Sud-Tourisme-NC?p=f&t=fiWBrRc0hpP30eeC-0" class="bubble-link" target="_blank"><i class="fas fa-seedling"></i> Voir le projet visuel</a>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-tree"></i> AGROFORESTERIE</h3>
+                <div class="badge">2026</div>
+                <p><strong>Pépinière de Nessaidou</strong><br>Projet dédié à mon père - Lancement business</p>
+                <a href="http://localhost/Nessadiou/" class="bubble-link" target="_blank"><i class="fas fa-seedling"></i> Voir le projet</a>
+            </div>
+            <div class="card">
+                <h3><i class="fab fa-trello"></i> AGROFORESTERIE</h3>
+                <div class="badge">Trello</div>
+                <p><strong>Plan Trello de la Pépinière de Nessaidou</strong><br>Trello du projet de la pépinière de Nessaidou</p>
+                <a href="https://trello.com/b/Gopc2cha/jean-projet-web" class="bubble-link" target="_blank"><i class="fab fa-trello"></i> Voir le Trello</a>
+            </div>
+            <div class="card">
+                <h3><i class="fab fa-html5"></i> HTML/CSS</h3>
+                <div class="badge">2026</div>
+                <p><strong>Site BTS SIO 2026</strong><br>Développement complet en HTML et CSS</p>
+            </div>
+            <div class="card">
+                <h3><i class="fab fa-php"></i> HTML/PHP</h3>
+                <div class="badge">2025</div>
+                <p><strong>Semaine du Numérique</strong><br>Création d'énigmes interactives en HTML et PHP</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-music"></i> MUSIQUE</h3>
+                <div class="badge">2025-2026</div>
+                <p><strong>Chaîne Youtube Musicale (Principale)</strong><br>Publication hebdomadaire de morceaux</p>
+                <a href="https://www.youtube.com/@THEBOSSPRODNC" class="bubble-link" target="_blank"><i class="fab fa-youtube"></i> Aller sur la chaîne</a>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-music"></i> MUSIQUE</h3>
+                <div class="badge">2025-2026</div>
+                <p><strong>Chaîne Youtube Musicale (Secondaire)</strong><br>Publication hebdomadaire de morceaux</p>
+                <a href="https://www.youtube.com/@DJBRLPROD_2026" class="bubble-link" target="_blank"><i class="fab fa-youtube"></i> Aller sur la chaîne</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPÉRIENCES -->
+    <section id="experiences">
+        <h2 class="section-title"><i class="fas fa-briefcase"></i> EXPÉRIENCES</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3><i class="fas fa-desktop"></i> EMPLOI · Stage SEH-NC (Place des Cocotiers, Nouméa)</h3>
+                <div class="meta">SEH-NC - Du 29 juin au 7 août 2026</div>
+                <p>Création et visualisation du site web pour l'entreprise</p>
+                <a href="http://localhost/SEHNC_JRH/" class="bubble-link" target="_blank"><i class="fas fa-eye"></i> Voir le projet</a>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-user-cog"></i> EMPLOI · Stage Cegelec (Numbo)</h3>
+                <div class="meta">Mai à Juin 2025 · 6 semaines</div>
+                <p>Employé et Stagiaire en Informatique</p>
+                <p>Mise en place de postes et écrans informatiques ; configuration de plusieurs imprimantes ; installation dans les entreprises</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-flag"></i> CTF · HACKAGOU</h3>
+                <div class="meta">Méridien, Ouen Toro, Nouméa · 1er octobre 2026</div>
+                <p><strong>42ème / 137 équipes</strong> · Évènement professionnel + Travail tout seul</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-flag"></i> CTF · HACKAGOU</h3>
+                <div class="meta">Arène du Sud, Païta · 1er octobre 2025</div>
+                <p><strong>32ème / 250 équipes</strong> · Évènement professionnel + Travail en groupe</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-paint-brush"></i> UX · Rénovation Site Pronote</h3>
+                <div class="meta">2023-2024</div>
+                <p>Amélioration visuelle et ergonomique</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-desktop"></i> IT · Installation Informatique</h3>
+                <div class="meta">Kimonos du Cœur · 2025-2026</div>
+                <p>Configuration de postes en Linux ; Installation du Pack Office et assistance</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPÉTENCES -->
+    <section id="competences">
+        <h2 class="section-title"><i class="fas fa-cogs"></i> COMPÉTENCES</h2>
+        <div class="skill-block">
+            <div class="skill-item"><h4><i class="fas fa-database"></i> BDD</h4><div class="sub">SQL · Requêtes</div></div>
+            <div class="skill-item"><h4><i class="fas fa-code"></i> SCRIPTS</h4><div class="sub">Python · Algorithme, PDO, scripts</div></div>
+            <div class="skill-item"><h4><i class="fab fa-html5"></i> FRONT</h4><div class="sub">HTML / CSS · Structuration web, responsive design, bonnes pratiques</div></div>
+            <div class="skill-item"><h4><i class="fab fa-php"></i> BACK</h4><div class="sub">PHP · Développement backend, connexion base de données</div></div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+        <h2 class="section-title"><i class="fas fa-certificate"></i> CERTIFICATIONS</h2>
+        <div class="cert-grid">
+            
+            <!-- BLOC MODIFIÉ : PIX avec bouton en dessous -->
+            <div class="cert-card-pix">
+                <div class="cert-title">
+                    <i class="fas fa-server"></i> CERTIFICATION PIX 2026
+                </div>
+                <a href="certification-pix-20260922.pdf" class="bubble-link" target="_blank">
+                    <i class="fas fa-eye"></i> Voir la certification
+                </a>
+            </div>
+
+            <!-- BLOC MODIFIÉ : CISCO avec bouton en dessous -->
+            <div class="cert-card-pix">
+                <div class="cert-title">
+                    <i class="fas fa-server"></i> CERTIFICATION Insfrastructure Système et Réseaux : Linux (Cisco) 2025
+                </div>
+                <a href="_certificate_cisco.pdf" class="bubble-link" target="_blank">
+                    <i class="fas fa-eye"></i> Voir la certification
+                </a>
+            </div>
+            
+            <!-- Les autres certifications restent inchangées -->
+            <div class="cert-tag"><i class="fab fa-html5"></i> HTML5 & CSS3 2026</div>
+            <div class="cert-tag"><i class="fab fa-php"></i> PHP 2026</div>
+            <div class="cert-tag"><i class="fas fa-database"></i> MySQL 2026</div>
+            <div class="cert-tag"><i class="fab fa-python"></i> Python 2025</div>
+        </div>
+    </section>
+
+    <!-- DIPLÔMES -->
+    <section id="diplomes">
+        <h2 class="section-title"><i class="fas fa-graduation-cap"></i> DIPLÔMES – Parcours académique</h2>
+        <div class="diplome-item"><strong>BAC 2024</strong> <span class="detail">Baccalauréat Général · Maths, NSI - Lycée Blaise Pascal</span></div>
+        <div class="diplome-item"><strong>DNB 2021</strong> <span class="detail">DNB & PSCI · Collège Jean Mariotti</span></div>
+    </section>
+
+    <!-- VEILLE TECHNOLOGIQUE -->
+    <section id="veille">
+        <h2 class="section-title"><i class="fas fa-rss"></i> VEILLE TECHNOLOGIQUE</h2>
+        <div class="veille-block">
+            <h4><i class="fas fa-wifi"></i> L'IA passe du monde numérique au monde physique</h4>
+            <p style="margin-top:0.2rem; color:#1b3a52;"></p>
+            <a href="https://www.canva.com/design/DAHWhTSk2ew/HQtDzg9Kv7krFRd89Vghdg/edit" class="bubble-link" style="margin-top:0.8rem;" target="_blank"><i class="fas fa-newspaper"></i> Lire l'article</a>
+        </div>
+    </section>
+
+    <!-- RÉSEAUX SOCIAUX -->
+    <section id="reseaux">
+        <h2 class="section-title"><i class="fas fa-share-alt"></i> RÉSEAUX SOCIAUX - Me retrouver</h2>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/jean-robert-h%C3%A9naff-4b1a0a362/" target="_blank"><i class="fab fa-linkedin"></i> Jean Robert--Hénaff</a>
+            <a href="https://www.facebook.com/THEBOSSPROD/" target="_blank"><i class="fab fa-facebook"></i> Jean Robert--Hénaff</a>
+            <a href="https://www.youtube.com/@THEBOSSPRODNC" target="_blank"><i class="fas fa-music"></i> THEBOSSPRODNC · Chaîne musicale</a>
+            <a href="https://www.youtube.com/@DJBRLPROD_2026" target="_blank"><i class="fas fa-music"></i> DJBRLPROD · Chaîne musicale</a>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2 class="section-title"><i class="fas fa-envelope"></i> CONTACT - Me joindre</h2>
+        <div class="contact-grid">
+            <div class="contact-item"><i class="fas fa-envelope"></i> <strong>Adresse Email</strong><br>jrhnc98@gmail.com <a href="mailto:jrhnc98@gmail.com"></a></div>
+            <div class="contact-item"><i class="fas fa-phone-alt"></i> <strong>Téléphone</strong><br>+687 75 51 07 <a href="tel:+687755107"></a></div>
+            <div class="contact-item"><i class="fas fa-map-marker-alt"></i> <strong>Adresse postale</strong><br>25, Rue des Promeneurs, PK6 - Nouvelle-Calédonie <a href="https://earth.google.com/web/search/25+Rue+des+Promeneurs,+Noum%c3%a9a/@-22.24157913,166.47511755,10.59212861a,2144.5585569d,35y,0h,0t,0r/data=Cj8aEQoNL2cvMTF3bV9ubTExaxgBIiYKJAnZ1xw0JT02wBEJRr3hkD42wBn64SFLbc9kQCENqunEBs9kQEICCAE6AwoBMEICCABKDQj___________8BEAA" class="bubble-link" style="margin-top:0.3rem;" target="_blank"><i class="fas fa-map-pin"></i> Voir sur la carte</a></div>
+        </div>
+    </section>
+
+    <hr class="separator">
+    <div class="footer">
+        <i class="fas fa-code"></i> Jean Robert--Hénaff · BTS SIO SLAM · 2026
+    </div>
+</div>
+
+</body>
+</html>
